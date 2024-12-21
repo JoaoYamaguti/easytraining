@@ -1,0 +1,56 @@
+@import url('globals.css');
+
+body {
+    height: 100vh;
+}
+
+.home {
+    max-width: 100%;
+    height: 100%;
+
+    padding: 1rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    & main {
+        flex: 1;
+
+        width: 100%;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        & section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & button {
+            align-self: center;
+
+            inline-size: 90%;
+
+            padding: .5rem;
+
+            border: none;
+            border-radius: 1rem;
+
+            background-color: var(--primary-color);
+
+            color: var(--text);
+            font-size: 1.5rem;
+        }
+    }
+
+    & footer {
+        font-size: 0.8rem;
+    }
+}
