@@ -1,12 +1,6 @@
-@import url('globals.css');
-
-body {
-    height: 100vh;
-}
-
 .home {
     max-width: 100%;
-    height: 100%;
+    height: 100vh;
 
     padding: 1rem;
 
@@ -31,22 +25,6 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        & button {
-            align-self: center;
-
-            inline-size: 90%;
-
-            padding: .5rem;
-
-            border: none;
-            border-radius: 1rem;
-
-            background-color: var(--primary-color);
-
-            color: var(--text);
-            font-size: 1.5rem;
         }
     }
 

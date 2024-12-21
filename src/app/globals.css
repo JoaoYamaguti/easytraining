@@ -39,3 +39,20 @@ a {
         color-scheme: light;
     }
 }
+
+.submitButton {
+    align-self: center;
+
+    inline-size: 90%;
+
+    padding: .5rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    background-color: var(--primary-color);
+
+    color: var(--text);
+    text-align: center;
+    font-size: 1.5rem;
+}
