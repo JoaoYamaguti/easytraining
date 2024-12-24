@@ -7,7 +7,7 @@ import { IPerson } from '@imgenhancer/app/lib/interface/IPerson'
 import { postTraining } from '@imgenhancer/app/lib/api/api'
 
 export default function Page() {
-    const todayString = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
+    const todayString = `${new Date().getFullYear() - 1}-${new Date().getMonth()}-${new Date().getDate()}`
     const data = {
         week: Array(7).fill(''),
         level: ['iniciante', 'intermediario', 'avançado', 'profissional']
@@ -41,6 +41,13 @@ export default function Page() {
             alert('please fulfill all fields.')
             return
         }
+
+        if (person.age < 10) {
+            alert("Please consult a doctor of your choice for better guidance.")
+            return
+        }
+
+
 
         const training = await postTraining(person)
 
