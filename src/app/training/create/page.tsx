@@ -9,12 +9,14 @@ import Loading from '@imgenhancer/app/ui/components/loading'
 
 export default function Page() {
     const todayString = `${new Date().getFullYear() - 1}-${new Date().getMonth()}-${new Date().getDate()}`
+
     const data = {
         week: Array(7).fill(''),
         level: ['iniciante', 'intermediario', 'avançado', 'profissional']
     }
 
     const [person, setPerson] = useState({} as IPerson)
+    const [loading, setLoading] = useState(false)
 
 
     function handleAge(birthDay: string) {
@@ -48,9 +50,11 @@ export default function Page() {
             return
         }
 
-
+        setLoading(true)
 
         const training = await postTraining(person)
+
+        setLoading(false)
 
         console.log(training)
     }
@@ -94,8 +98,9 @@ export default function Page() {
 
                 <button type='button' className="submitButton" onClick={generate}>Create Training</button >
             </form>
-
-            <Loading />
+            {
+                loading && <Loading />
+            }
         </main>
     )
 }
