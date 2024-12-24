@@ -5,6 +5,7 @@ import { useState } from 'react'
 import './style.css'
 import { IPerson } from '@imgenhancer/app/lib/interface/IPerson'
 import { postTraining } from '@imgenhancer/app/lib/api/api'
+import Loading from '@imgenhancer/app/ui/components/loading'
 
 export default function Page() {
     const todayString = `${new Date().getFullYear() - 1}-${new Date().getMonth()}-${new Date().getDate()}`
@@ -93,6 +94,8 @@ export default function Page() {
 
                 <button type='button' className="submitButton" onClick={generate}>Create Training</button >
             </form>
+
+            <Loading />
         </main>
     )
 }
