@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-// import Link from 'next/link'
-import './style.css'
+import { useRouter } from "next/navigation";
 import { IPerson } from '@imgenhancer/app/lib/interface/IPerson'
 import { postTraining } from '@imgenhancer/app/lib/api/api'
 import Loading from '@imgenhancer/app/ui/components/loading'
+import './style.css'
 
 export default function Page() {
     const todayString = `${new Date().getFullYear() - 1}-${new Date().getMonth()}-${new Date().getDate()}`
@@ -15,9 +15,10 @@ export default function Page() {
         level: ['iniciante', 'intermediario', 'avançado', 'profissional']
     }
 
+    const router = useRouter()
+
     const [person, setPerson] = useState({} as IPerson)
     const [loading, setLoading] = useState(false)
-
 
     function handleAge(birthDay: string) {
         const birthDate = new Date(birthDay)
@@ -54,9 +55,11 @@ export default function Page() {
 
         const training = await postTraining(person)
 
+        localStorage.setItem("training", JSON.stringify(training))
+
         setLoading(false)
 
-        console.log(training)
+        router.push('/training')
     }
 
     return (

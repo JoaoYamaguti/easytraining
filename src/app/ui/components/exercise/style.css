@@ -1,0 +1,10 @@
+.exercise {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    gap: .5rem;
+
+    & h3 {
+        text-align: center;
+    }
+}
