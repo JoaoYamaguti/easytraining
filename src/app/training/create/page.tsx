@@ -1,10 +1,11 @@
-'use client'
+"use client"
 
 import { useState } from 'react'
 import { useRouter } from "next/navigation";
 import { IPerson } from '@imgenhancer/app/lib/interface/IPerson'
 import { postTraining } from '@imgenhancer/app/lib/api/api'
 import Loading from '@imgenhancer/app/ui/components/loading'
+
 import './style.css'
 
 export default function Page() {
@@ -63,33 +64,41 @@ export default function Page() {
     }
 
     return (
-        <main className="createTraining">
+        <main className="createTraining container">
             <form>
-                <label htmlFor="age">
-                    Birthday
+                <p>
+                    <label htmlFor="age">
+                        Birthday
+                    </label>
                     <input type="date" name="age" id="age" max={todayString} onChange={(e) => handleAge(e.target.value)} />
-                </label>
+                </p>
 
-                <label htmlFor="sex">
-                    Sex
+                <p>
+                    <label htmlFor="sex">
+                        Sex
+                    </label>
                     <select name="sex" id="sex" onChange={(e) => handleSex(e.target.value)}>
                         <option value=""></option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
-                </label>
+                </p>
 
-                <label htmlFor="days">
-                    Days for Week
+                <p>
+                    <label htmlFor="days">
+                        Days for Week
+                    </label>
                     <select name="days" id="days" onChange={(e) => handleDays(e.target.value)}>
                         <option value=""></option>
                         {
                             data.week.map((_, index) => <option key={index} value={index + 1}>{index + 1}</option>)
                         }
                     </select>
-                </label>
-                <label htmlFor="days">
-                    level
+                </p>
+                <p>
+                    <label htmlFor="days">
+                        level
+                    </label>
                     <select name="days" id="days" onChange={(e) => handleLevel(e.target.value)}>
                         <option value=""></option>
 
@@ -97,7 +106,7 @@ export default function Page() {
                             data.level.map((l, index) => <option key={index} value={l}>{l}</option>)
                         }
                     </select>
-                </label>
+                </p>
 
                 <button type='button' className="submitButton" onClick={generate}>Create Training</button >
             </form>

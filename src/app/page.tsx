@@ -1,16 +1,27 @@
-import "./style.css";
+"use client"
+
 import Link from "next/link";
+import Image from "next/image";
+
+import Header from "./ui/components/header";
+
+import "./style.css";
 
 export default function Home() {
     return (
-        <div className="home">
-            <header>
-                <h1>EasyTraining</h1>
-            </header>
+        <div className="home container">
+            <Header />
 
             <main>
                 <section>
                     <p>Get your own training created by AI.</p>
+
+                    <Image
+                        src="/personFreshAirWorkout.png"
+                        alt="Person training"
+                        width={270}
+                        height={230}
+                    />
                 </section>
 
                 <Link href={'/training/create'} className="submitButton">Create Training</Link>
@@ -18,6 +29,5 @@ export default function Home() {
 
             <footer>Made by João Yamaguti</footer>
         </div>
-
     );
 }

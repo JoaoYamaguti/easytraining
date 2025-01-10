@@ -1,14 +1,13 @@
-'use client'
+"use client"
 
-import { PiWarningFill } from "react-icons/pi";
-
-import './style.css'
 import { useEffect, useState } from "react";
+import { PiWarningFill } from "react-icons/pi";
 import { ITraining } from "../lib/interface/ITraining";
 import Card from "../ui/components/card";
 
+import './style.css'
+
 export default function Page() {
-    console.log(JSON.parse(localStorage.getItem("training") as string))
     const [training, setTraining] = useState<ITraining>()
 
     useEffect(() => {
@@ -18,7 +17,7 @@ export default function Page() {
     }, [])
 
     return (
-        <div className="training">
+        <div className="training container">
             <main>
                 <section className="warning">
                     <h1><PiWarningFill /> Warning <PiWarningFill /></h1>
@@ -38,11 +37,14 @@ export default function Page() {
 
                             <p>{training.warning}</p>
 
-                            {training.days.map((d,index) => <Card key={index} day={d}/>)}
+                            {training.days.map((d, index) => <Card key={index} day={d} />)}
 
                         </section>
                     )
                 }
+
+                <button className="submitButton">Save Training</button>
+
             </main>
         </div>
     )

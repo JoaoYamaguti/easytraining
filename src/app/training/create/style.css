@@ -9,15 +9,22 @@
     align-items: flex-start;
 
     & form {
-        flex: 1;
-
         width: 100%;
+
+        margin: auto;
+        border: var(--border);
+        border-radius: 1.5rem;
+        padding: 1.5rem;
 
         display: flex;
         flex-flow: column nowrap;
-        justify-content: center;
+        justify-content: space-between;
         align-items: flex-start;
-        gap: 1rem;
+        gap: 1.3rem;
+
+        & p{
+            inline-size: 100%;
+        }
 
         & label {
             width: 100%;
@@ -30,18 +37,29 @@
 
             text-transform: capitalize;
 
-            & input,
-            select {
-                justify-self: center;
-                padding: 0 1rem;
-                text-align: center;
-                text-transform: capitalize;
+        }
 
-            }
+        & input,
+        select {
+            width: 100%;
+            line-height: 1.5rem;
 
-            & option {
-                text-transform: capitalize;
-            }
+            justify-self: center;
+            padding: .8rem;
+            text-transform: capitalize;
+
+        }
+
+        & option {
+            text-transform: capitalize;
+        }
+    }
+}
+
+@media (min-width:426px) {
+    .createTraining {
+        & form{
+            max-width: 426px;
         }
     }
 }
