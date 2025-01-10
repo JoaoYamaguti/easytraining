@@ -54,7 +54,9 @@ export default function Page() {
 
         setLoading(true)
 
-        const training = await postTraining(person)
+        const workout = await postTraining(person)
+
+        const training = {...workout, sessions: 0}
 
         localStorage.setItem("training", JSON.stringify(training))
 
@@ -101,7 +103,6 @@ export default function Page() {
                     </label>
                     <select name="days" id="days" onChange={(e) => handleLevel(e.target.value)}>
                         <option value=""></option>
-
                         {
                             data.level.map((l, index) => <option key={index} value={l}>{l}</option>)
                         }

@@ -68,9 +68,36 @@ select {
 
     cursor: pointer;
 }
-
 .submitButton:hover {
     background-color: var(--primary-color-hover);
+}
+
+.cancelButton {
+    align-self: center;
+
+    inline-size: 100%;
+
+    padding: .75rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    background-color: var(--text-gray);
+
+    color: var(--text);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    & svg {
+        inline-size: 2rem;
+        block-size: 2rem;
+    }
+}
+.cancelButton:hover {
+    background-color: var(--background-session);
 }
 
 .container {

@@ -14,6 +14,7 @@ export interface IDay {
 }
 
 export interface ITraining {
+    sessions : number 
     description: string
     warning: string
     days: [IDay]

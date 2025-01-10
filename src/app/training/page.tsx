@@ -1,20 +1,17 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { PiWarningFill } from "react-icons/pi";
+import { TiCancel } from "react-icons/ti";
 import { ITraining } from "../lib/interface/ITraining";
 import Card from "../ui/components/card";
 
-import './style.css'
+import './style.css';
 
 export default function Page() {
-    const [training, setTraining] = useState<ITraining>()
+    const training = JSON.parse(localStorage.getItem("training") as string) as ITraining
 
-    useEffect(() => {
-        setTraining(JSON.parse(localStorage.getItem("training") as string))
-        console.log(training)
-
-    }, [])
+    const router = useRouter()
 
     return (
         <div className="training container">
@@ -43,7 +40,10 @@ export default function Page() {
                     )
                 }
 
-                <button className="submitButton">Save Training</button>
+                <div className="btns">
+                    <button className="cancelButton" onClick={() => router.push("/training/create")}><TiCancel /></button>
+                    <button className="submitButton" onClick={() => router.push("/session")}>Save Training</button>
+                </div>
 
             </main>
         </div>

@@ -12,7 +12,7 @@ export default function Exercise(props: IExerciseProps) {
     const {exercise} = props
 
     return (
-        <div className="exercise">
+        <div className="exerciseDetails">
 
             <h3>{exercise.name}</h3>
             <p>{exercise.description}</p>

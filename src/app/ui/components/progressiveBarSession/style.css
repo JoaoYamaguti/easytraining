@@ -1,0 +1,23 @@
+.progressiveBarSession {
+    inline-size: 100%;
+
+    border: var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .5rem;
+
+    .ProgrssiveShell {
+        inline-size: 100%;
+
+        border-radius: 50%;
+
+        background-color: var(--background-session);
+
+        & ProgrssiveFill{
+            background-color: var(--primary-color);
+        }
+    }
+}
