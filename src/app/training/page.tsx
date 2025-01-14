@@ -44,7 +44,6 @@ export default function Page() {
                     <button className="cancelButton" onClick={() => router.push("/training/create")}><TiCancel /></button>
                     <button className="submitButton" onClick={() => router.push("/session")}>Save Training</button>
                 </div>
-
             </main>
         </div>
     )

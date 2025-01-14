@@ -1,15 +1,16 @@
 "use client"
 
-import { useState } from 'react'
+import { postTraining } from '@imgenhancer/app/lib/api/api';
+import { IPerson } from '@imgenhancer/app/lib/interface/IPerson';
+import Loading from '@imgenhancer/app/ui/components/loading';
 import { useRouter } from "next/navigation";
-import { IPerson } from '@imgenhancer/app/lib/interface/IPerson'
-import { postTraining } from '@imgenhancer/app/lib/api/api'
-import Loading from '@imgenhancer/app/ui/components/loading'
+import { useState } from 'react';
 
-import './style.css'
+import './style.css';
 
 export default function Page() {
-    const todayString = `${new Date().getFullYear() - 1}-${new Date().getMonth()}-${new Date().getDate()}`
+    const todayString = new Date().toISOString().split("T")[0]
+    console.log(todayString)
 
     const data = {
         week: Array(7).fill(''),
@@ -60,9 +61,9 @@ export default function Page() {
 
         localStorage.setItem("training", JSON.stringify(training))
 
-        setLoading(false)
-
         router.push('/training')
+
+        setLoading(false)
     }
 
     return (
@@ -83,6 +84,7 @@ export default function Page() {
                         <option value=""></option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
+                        <option value="Female">Others</option>
                     </select>
                 </p>
 

@@ -26,7 +26,12 @@
             flex-flow: column;
             justify-content: space-between;
             gap: 1rem;
+        }
 
+        & .btns {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: .5rem;
         }
     }
 }

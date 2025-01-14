@@ -1,10 +1,12 @@
+"use client"
 
 import { useRouter } from "next/navigation"
-import { ITraining } from "../lib/interface/ITraining"
+import { IExercise, ITraining } from "../lib/interface/ITraining"
 import Exercise from "../ui/components/exercise"
 
 import "./style.css"
 import ProgressiveBarSession from "../ui/components/progressiveBarSession"
+import { useState } from "react"
 
 export default function Page() {
     const router = useRouter()
@@ -15,7 +17,8 @@ export default function Page() {
         return router.push("/training/create")
     }
 
-    const workout: ITraining = JSON.parse(training)
+    const [workout, setWorkout] = useState<ITraining>(JSON.parse(training))
+    console.log(workout)
 
     const day = workout.sessions % workout.days.length
 
@@ -26,7 +29,7 @@ export default function Page() {
 
                 <section className="workoutDay">
                     {
-                        workout.days[day].exercises.map((e) => (
+                        workout.days[day].exercises.map((e: IExercise) => (
 
                             <div className="exercise">
                                 <Exercise exercise={e} />
