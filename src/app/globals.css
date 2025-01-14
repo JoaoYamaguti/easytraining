@@ -5,7 +5,7 @@
     --primary-color: #8234E9;
     --primary-color-hover: #4b198d;
     --green-color: #32EA66;
-    --red-color: #F20000;
+    --red-color: #FE2E2E;
     --text: #FFFFFF;
     --text-gray: #C4C4CC;
     --border: 1px solid #c4c4cc
@@ -56,8 +56,8 @@ select {
 
     padding: .75rem;
 
-    border: none;
-    border-radius: 1rem;
+    border: solid 1px var(--primary-color);
+    border-radius: .4rem;
 
     background-color: var(--primary-color);
 
@@ -69,22 +69,25 @@ select {
     cursor: pointer;
 }
 .submitButton:hover {
+    border: solid 1px var(--primary-color-hover);
     background-color: var(--primary-color-hover);
 }
 
 .cancelButton {
     align-self: center;
 
-    inline-size: 100%;
-
     padding: .75rem;
 
-    border: none;
-    border-radius: 1rem;
+    border: solid 1px var(--red-color);
+    border-radius: .4rem;
 
-    background-color: var(--text-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    color: var(--text);
+    background-color: var(--background-session);
+
+    color: var(--red-color);
     text-align: center;
     font-size: 1.5rem;
     font-weight: 700;
@@ -92,8 +95,8 @@ select {
     cursor: pointer;
 
     & svg {
-        inline-size: 2rem;
-        block-size: 2rem;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
     }
 }
 .cancelButton:hover {
