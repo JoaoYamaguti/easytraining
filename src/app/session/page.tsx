@@ -17,7 +17,7 @@ export default function Page() {
         return router.push("/training/create")
     }
 
-    const [workout, setWorkout] = useState<ITraining>(JSON.parse(training))
+    const workout = JSON.parse(training)
     console.log(workout)
 
     const day = workout.sessions % workout.days.length

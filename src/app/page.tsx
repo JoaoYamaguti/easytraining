@@ -5,6 +5,8 @@ import Header from "./ui/components/header";
 import "./style.css";
 
 export default function Home() {
+    const haveTraining = localStorage.getItem("training")
+
     return (
         <div className="home container">
             <Header />
@@ -20,7 +22,9 @@ export default function Home() {
                         height={230}
                     />
                 </section>
-
+                {
+                    !haveTraining ? <Link href={'/training/create'} className="submitButton">Create Training</Link> : <Link href={'/session'} className="submitButton">Continue...</Link>
+                }
                 <Link href={'/training/create'} className="submitButton">Create Training</Link>
             </main>
 
