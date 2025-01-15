@@ -3,15 +3,26 @@
 import { useRouter } from "next/navigation";
 import { PiWarningFill } from "react-icons/pi";
 import { TiCancel, TiRefresh } from "react-icons/ti";
-import { ITraining } from "../lib/interface/ITraining";
+import { useTraining } from "../lib/context/trainingContext";
 import Card from "../ui/components/card";
 
 import './style.css';
 
 export default function Page() {
-    const training = JSON.parse(localStorage.getItem("training") as string) as ITraining
-
     const router = useRouter()
+    const {training} = useTraining()
+
+    const haveTraining = localStorage.getItem("training")
+
+    if (haveTraining) {
+        router.push("/session")
+    }
+
+    function saveTraining() {      
+        localStorage.setItem("training", JSON.stringify(training))
+
+        router.push("/session")
+    }
 
     return (
         <div className="training container">
@@ -42,8 +53,8 @@ export default function Page() {
 
                 <div className="btns">
                     <button className="cancelButton" onClick={() => router.push("/training/create")}><TiCancel /></button>
-                    <button className="backButton" onClick={() => router.push("/training/create")}><TiRefresh /></button>
-                    <button className="submitButton" onClick={() => router.push("/session")}>Save Training</button>
+                    <button className="backButton" onClick={() => router.push("/training/generate")}><TiRefresh /></button>
+                    <button className="submitButton" onClick={saveTraining}>Save Training</button>
                 </div>
             </main>
         </div>

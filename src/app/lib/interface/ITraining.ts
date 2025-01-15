@@ -19,3 +19,8 @@ export interface ITraining {
     warning: string
     days: [IDay]
 }
+
+export interface ITrainingContext {
+    training: ITraining
+    addTraining: (training: ITraining) => void
+}

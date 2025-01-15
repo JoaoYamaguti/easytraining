@@ -1,15 +1,17 @@
 "use client"
 
-import { IPerson, IPersonContext } from '@imgenhancer/app/lib/interface/IPerson';
-import Loading from '@imgenhancer/app/ui/components/loading';
-import { useRouter } from "next/navigation";
-import { useContext, useState } from 'react';
-
+import { usePerson } from '../../lib/context/personContext';
+import { IPerson } from '../../lib/interface/IPerson';
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
+import { useState } from 'react';
+
 import './style.css';
 
 export default function Page() {
-    const { addPerson } = useContext<IPersonContext>(personContext)
+    const { addPerson } = usePerson()
+    const router = useRouter()
+    const [person, setPerson] = useState({} as IPerson)
 
     const todayString = new Date().toISOString().split("T")[0]
     console.log(todayString)
@@ -18,10 +20,6 @@ export default function Page() {
         week: Array(7).fill(''),
         level: ['iniciante', 'intermediario', 'avançado', 'profissional']
     }
-
-    const router = useRouter()
-
-    const [person, setPerson] = useState({} as IPerson)
 
     function handleAge(birthDay: string) {
         const birthDate = new Date(birthDay)
@@ -54,7 +52,7 @@ export default function Page() {
             return
         }
 
-
+        addPerson(person)
 
         router.push('/training')
     }
