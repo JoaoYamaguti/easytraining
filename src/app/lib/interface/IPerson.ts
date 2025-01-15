@@ -4,3 +4,8 @@ export interface IPerson {
     days: number
     level: string
 }
+
+export interface IPersonContext {
+    person: IPerson
+    addPerson: (person: IPerson) => void
+}

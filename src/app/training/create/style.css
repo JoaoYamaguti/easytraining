@@ -13,7 +13,7 @@
 
         margin: auto;
         border: var(--border);
-        border-radius: 1.5rem;
+        border-radius: 5px;
         padding: 1.5rem;
 
         display: flex;

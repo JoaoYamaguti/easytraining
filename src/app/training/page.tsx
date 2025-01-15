@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { PiWarningFill } from "react-icons/pi";
-import { TiCancel } from "react-icons/ti";
+import { TiCancel, TiRefresh } from "react-icons/ti";
 import { ITraining } from "../lib/interface/ITraining";
 import Card from "../ui/components/card";
 
@@ -42,6 +42,7 @@ export default function Page() {
 
                 <div className="btns">
                     <button className="cancelButton" onClick={() => router.push("/training/create")}><TiCancel /></button>
+                    <button className="backButton" onClick={() => router.push("/training/create")}><TiRefresh /></button>
                     <button className="submitButton" onClick={() => router.push("/session")}>Save Training</button>
                 </div>
             </main>

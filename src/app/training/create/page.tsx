@@ -1,14 +1,16 @@
 "use client"
 
-import { postTraining } from '@imgenhancer/app/lib/api/api';
-import { IPerson } from '@imgenhancer/app/lib/interface/IPerson';
+import { IPerson, IPersonContext } from '@imgenhancer/app/lib/interface/IPerson';
 import Loading from '@imgenhancer/app/ui/components/loading';
 import { useRouter } from "next/navigation";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
+import Link from 'next/link';
 import './style.css';
 
 export default function Page() {
+    const { addPerson } = useContext<IPersonContext>(personContext)
+
     const todayString = new Date().toISOString().split("T")[0]
     console.log(todayString)
 
@@ -20,7 +22,6 @@ export default function Page() {
     const router = useRouter()
 
     const [person, setPerson] = useState({} as IPerson)
-    const [loading, setLoading] = useState(false)
 
     function handleAge(birthDay: string) {
         const birthDate = new Date(birthDay)
@@ -41,7 +42,7 @@ export default function Page() {
         setPerson({ ...person, level })
     }
 
-    async function generate() {
+    async function saveInfos() {
         console.log(person)
         if (!person.age || !person.sex || !person.days || !person.level) {
             alert('please fulfill all fields.')
@@ -53,17 +54,9 @@ export default function Page() {
             return
         }
 
-        setLoading(true)
 
-        const workout = await postTraining(person)
-
-        const training = {...workout, sessions: 0}
-
-        localStorage.setItem("training", JSON.stringify(training))
 
         router.push('/training')
-
-        setLoading(false)
     }
 
     return (
@@ -111,11 +104,8 @@ export default function Page() {
                     </select>
                 </p>
 
-                <button type='button' className="submitButton" onClick={generate}>Create Training</button >
+                <Link href={"generate"} className="submitButton">Create Training</Link >
             </form>
-            {
-                loading && <Loading />
-            }
         </main>
     )
 }
