@@ -1,12 +1,11 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { IExercise, ITraining } from "../lib/interface/ITraining"
+import { IExercise } from "../lib/interface/ITraining"
 import Exercise from "../ui/components/exercise"
+import ProgressiveBarSession from "../ui/components/progressiveBarSession"
 
 import "./style.css"
-import ProgressiveBarSession from "../ui/components/progressiveBarSession"
-import { useState } from "react"
 
 export default function Page() {
     const router = useRouter()
@@ -25,13 +24,13 @@ export default function Page() {
     return (
         <div className="session container">
             <main>
-                <ProgressiveBarSession sessions={workout.sessions}/>
+                <ProgressiveBarSession days={workout.days.length} sessions={workout.sessions}/>
 
                 <section className="workoutDay">
                     {
-                        workout.days[day].exercises.map((e: IExercise) => (
+                        workout.days[day].exercises.map((e: IExercise, index: number) => (
 
-                            <div className="exercise">
+                            <div key={index} className="exercise">
                                 <Exercise exercise={e} />
                             </div>
                         )

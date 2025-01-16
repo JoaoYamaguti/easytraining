@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./ui/components/header";
@@ -23,9 +25,11 @@ export default function Home() {
                     />
                 </section>
                 {
-                    !haveTraining ? <Link href={'/training/create'} className="submitButton">Create Training</Link> : <Link href={'/session'} className="submitButton">Continue...</Link>
+                    !haveTraining ?
+                        <Link href={'/training/create'} className="submitButton">Create Training</Link>
+                        :
+                        <Link href={'/session'} className="submitButton">Continue...</Link>
                 }
-                <Link href={'/training/create'} className="submitButton">Create Training</Link>
             </main>
 
             <footer>Made by João Yamaguti</footer>

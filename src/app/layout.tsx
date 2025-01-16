@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PersonProvider } from "./lib/context/personContext";
 
 import "./globals.css";
+import { TrainingProvider } from "./lib/context/trainingContext";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -18,7 +19,9 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <PersonProvider>
-                    {children}
+                    <TrainingProvider>
+                        {children}
+                    </TrainingProvider>
                 </PersonProvider>
 
             </body>

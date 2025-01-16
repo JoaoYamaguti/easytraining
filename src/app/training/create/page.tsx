@@ -1,10 +1,9 @@
 "use client"
 
-import { usePerson } from '../../lib/context/personContext';
-import { IPerson } from '../../lib/interface/IPerson';
-import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { useState } from 'react';
+import { usePerson } from '../../lib/context/personContext';
+import { IPerson } from '../../lib/interface/IPerson';
 
 import './style.css';
 
@@ -14,7 +13,6 @@ export default function Page() {
     const [person, setPerson] = useState({} as IPerson)
 
     const todayString = new Date().toISOString().split("T")[0]
-    console.log(todayString)
 
     const data = {
         week: Array(7).fill(''),
@@ -29,6 +27,7 @@ export default function Page() {
     }
 
     function handleSex(sex: string) {
+        console.log(sex)
         setPerson({ ...person, sex })
     }
 
@@ -54,7 +53,7 @@ export default function Page() {
 
         addPerson(person)
 
-        router.push('/training')
+        router.push("/training/generate")
     }
 
     return (
@@ -75,7 +74,7 @@ export default function Page() {
                         <option value=""></option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                        <option value="Female">Others</option>
+                        <option value="Others">Others</option>
                     </select>
                 </p>
 
@@ -102,7 +101,7 @@ export default function Page() {
                     </select>
                 </p>
 
-                <Link href={"generate"} className="submitButton">Create Training</Link >
+                <button type="button" className="submitButton" onClick={saveInfos}>Create Training</button >
             </form>
         </main>
     )

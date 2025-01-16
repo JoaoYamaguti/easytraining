@@ -1,3 +1,5 @@
+"use client"
+
 import { createContext, useContext, useState } from "react";
 import { ITraining, ITrainingContext } from "../interface/ITraining";
 
@@ -13,7 +15,7 @@ export function TrainingProvider ({children}: Readonly<{ children: React.ReactNo
     }
 
     return (
-        <trainingContext.Provider value ={{training, addTraining}}> 
+        <trainingContext.Provider value ={{training, addTraining}}>
         {children}
         </ trainingContext.Provider>
     )
