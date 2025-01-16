@@ -7,7 +7,7 @@ import Header from "./ui/components/header";
 import "./style.css";
 
 export default function Home() {
-    const haveTraining = localStorage.getItem("training")
+    const haveTraining = localStorage.getItem("training") || null
 
     return (
         <div className="home container">

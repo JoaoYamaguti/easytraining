@@ -10,7 +10,7 @@ import "./style.css"
 export default function Page() {
     const router = useRouter()
 
-    const training = localStorage.getItem("training")
+    const training = localStorage.getItem("training") || null
 
     if (training == null) {
         return router.push("/training/create")
@@ -24,7 +24,7 @@ export default function Page() {
     return (
         <div className="session container">
             <main>
-                <ProgressiveBarSession days={workout.days.length} sessions={workout.sessions}/>
+                <ProgressiveBarSession days={workout.days.length} sessions={workout.sessions} />
 
                 <section className="workoutDay">
                     {

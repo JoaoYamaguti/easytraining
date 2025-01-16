@@ -3,7 +3,6 @@
 
     border-bottom:solid var(--border);
 
-    padding: 1rem;
 
     display: flex;
     flex-flow: column nowrap;
@@ -11,6 +10,12 @@
 
     & progress[value] {
         inline-size: 100%;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance: none;
+      }
+
+    & progress[value]::-webkit-progress-bar {
         block-size: 8px;
 
         border-radius: 5px;
