@@ -7,22 +7,25 @@ import { useTraining } from "../lib/context/trainingContext";
 import Card from "../ui/components/card";
 
 import './style.css';
+import { useEffect } from "react";
 
 export default function Page() {
+    const { training } = useTraining()
     const router = useRouter()
-    const {training} = useTraining()
 
-    const haveTraining = localStorage.getItem("training")
-
-    if (haveTraining) {
-        router.push("/session")
-    }
-
-    function saveTraining() {      
+    function saveTraining() {
         localStorage.setItem("training", JSON.stringify(training))
 
         router.push("/session")
+        return
     }
+
+    useEffect(()=>{
+        if (localStorage.getItem("training")) {
+            router.push("/session")
+            return
+        }
+    },[])
 
     return (
         <div className="training container">

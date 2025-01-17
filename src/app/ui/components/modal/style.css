@@ -1,0 +1,61 @@
+.backgroundModal{
+    inline-size: 100vw;
+    block-size: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.897);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .modal {
+        inline-size: 300px;
+        /* block-size: 350px; */
+
+        border: solid 1px var(--border);
+        border-radius: 5px;
+        padding: 1.5rem;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+
+        background-color: var(--background-session);
+
+        & header {
+            padding-bottom: 0.4rem;
+
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+
+            & svg {
+                inline-size: 20px;
+                block-size: 20px;
+            }
+        }
+
+        & p {
+            flex: 1;
+
+            padding: 2rem 0 ;
+
+            font-size: 1.1rem;
+        }
+
+        & .btnsModal {
+            align-self: flex-end;
+
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 1rem;
+
+            & button {
+                font-size: .9rem;
+            }
+        }
+    }
+}

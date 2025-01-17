@@ -1,16 +1,18 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePerson } from '../../lib/context/personContext';
 import { IPerson } from '../../lib/interface/IPerson';
 
 import './style.css';
+import Modal from "@imgenhancer/app/ui/components/modal";
 
 export default function Page() {
     const { addPerson } = usePerson()
     const router = useRouter()
     const [person, setPerson] = useState({} as IPerson)
+    const [showModal, setShowModal] = useState(false)
 
     const todayString = new Date().toISOString().split("T")[0]
 
@@ -55,6 +57,17 @@ export default function Page() {
 
         router.push("/training/generate")
     }
+
+    function callbackForModal() {
+        localStorage.removeItem("training")
+        setShowModal(false)
+    }
+
+    useEffect(() => {
+        if (localStorage.getItem("training")) {
+            setShowModal(true)
+        }
+    })
 
     return (
         <main className="createTraining container">
@@ -103,6 +116,9 @@ export default function Page() {
 
                 <button type="button" className="submitButton" onClick={saveInfos}>Create Training</button >
             </form>
+            {
+                showModal && <Modal title="" label="abc" returnTo="/session" callback={callbackForModal}/>
+            }
         </main>
     )
 }
