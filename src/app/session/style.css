@@ -4,6 +4,29 @@
     display: flex;
     flex-flow: column;
     gap: 1rem;
+
+    & .workoutDay {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+    }
+
+    & .navSession {
+        border-top: solid 1px var(--text-gray);
+        border-bottom: solid 1px var(--text-gray);
+        padding: .5rem 0;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        & svg, span {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+    }
 }
 
 .completed {
@@ -29,9 +52,7 @@
             text-align: center;
         }
 
-        & p {
-
-        }
+        & p {}
 
         & button {
             align-self: center;
@@ -42,6 +63,7 @@
 @media (min-width: 769px) {
     .completed {
         inline-size: 50%;
+
         & .completedSection {
             & button {
                 inline-size: 80%;

@@ -1,7 +1,8 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { IExercise } from "../lib/interface/ITraining"
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
+import { IExercise, ITraining } from "../lib/interface/ITraining"
 import Exercise from "../ui/components/exercise"
 import ProgressiveBarSession from "../ui/components/progressiveBarSession"
 
@@ -17,11 +18,29 @@ export default function Page() {
         return router.push("/training/create")
     }
 
-    const [workout, setWorkout] = useState(JSON.parse(training))
+    const [workout, setWorkout] = useState<ITraining>(JSON.parse(training))
 
     const [isCompleted, setIsCompleted] = useState(false)
 
-    const day = workout.sessions % workout.days.length
+    const [day, setDay] = useState(workout.sessions % workout.days.length)
+
+    function changeDay(op: string) {
+        console.log(day)
+        if (op === "+") {
+            if (day + 1 >= workout.days.length) {
+                setDay(0)
+            } else {
+                setDay(day => day + 1)
+            }
+        } else if (op === "-") {
+            if (day - 1 < 0) {
+                setDay(workout.days.length - 1)
+            } else {
+                setDay(day => day - 1)
+            }
+        }
+        console.log(day)
+    }
 
     function finish() {
         if (workout.sessions < (workout.days.length * 12)) {
@@ -52,6 +71,17 @@ export default function Page() {
             {
                 !isCompleted ? (
                     <section className="workoutDay">
+
+                        <nav className="navSession">
+                            <span onClick={() => changeDay("-")}>
+                                <FiChevronLeft />
+                            </span>
+                            <h3>{workout.days[day].title}</h3>
+                            <span onClick={() => changeDay("+")}>
+                                <FiChevronRight />
+                            </span>
+                        </nav>
+
                         {
                             workout.days[day].exercises.map((e: IExercise, index: number) => (
                                 <div key={index} className="exercise">
@@ -60,7 +90,7 @@ export default function Page() {
                             )
                             )
                         }
-                        <button type="button" className="confirmButton" onClick={finish}>Finish</button>
+                        <button type="button" className="confirmButton" onClick={finish}>Start {workout.days[day].title}</button>
                     </section>
                 )
                     : (

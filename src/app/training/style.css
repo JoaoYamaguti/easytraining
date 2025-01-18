@@ -29,6 +29,7 @@
         }
 
         & .btns {
+            align-self: flex-end;
             display: flex;
             flex-flow: row nowrap;
             gap: .5rem;

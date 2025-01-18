@@ -5,9 +5,17 @@ import Link from "next/link";
 import Header from "./ui/components/header";
 
 import "./style.css";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-    const haveTraining = localStorage.getItem("training") || null
+    const [haveTraining, setHaveTraining] = useState(false)
+
+    useEffect(()=>{
+        if (localStorage.getItem("training")) {
+            setHaveTraining(true)
+        }
+
+    },[])
 
     return (
         <div className="home container">

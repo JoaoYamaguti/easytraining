@@ -117,7 +117,12 @@ export default function Page() {
                 <button type="button" className="submitButton" onClick={saveInfos}>Create Training</button >
             </form>
             {
-                showModal && <Modal title="" label="abc" returnTo="/session" callback={callbackForModal}/>
+                showModal && <Modal
+                    title="Delete Workout"
+                    label="Do you sure you want to create a new workout?"
+                    returnTo="/session"
+                    callback={callbackForModal}
+                />
             }
         </main>
     )
