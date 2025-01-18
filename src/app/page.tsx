@@ -36,7 +36,7 @@ export default function Home() {
                     !haveTraining ?
                         <Link href={'/training/create'} className="submitButton">Create Training</Link>
                         :
-                        <Link href={'/session'} className="submitButton">Continue...</Link>
+                        <Link href={'/workout'} className="submitButton">Continue...</Link>
                 }
             </main>
 

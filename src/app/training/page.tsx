@@ -16,13 +16,13 @@ export default function Page() {
     function saveTraining() {
         localStorage.setItem("training", JSON.stringify(training))
 
-        router.push("/session")
+        router.push("/workout")
         return
     }
 
     useEffect(()=>{
         if (localStorage.getItem("training")) {
-            router.push("/session")
+            router.push("/workout")
             return
         }
     },[])

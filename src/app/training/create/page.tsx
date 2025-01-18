@@ -6,7 +6,7 @@ import { usePerson } from '../../lib/context/personContext';
 import { IPerson } from '../../lib/interface/IPerson';
 
 import './style.css';
-import Modal from "@imgenhancer/app/ui/components/modal";
+import Modal from "../../ui/components/modal";
 
 export default function Page() {
     const { addPerson } = usePerson()
@@ -120,7 +120,7 @@ export default function Page() {
                 showModal && <Modal
                     title="Delete Workout"
                     label="Do you sure you want to create a new workout?"
-                    returnTo="/session"
+                    returnTo="/workout"
                     callback={callbackForModal}
                 />
             }

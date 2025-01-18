@@ -12,20 +12,19 @@ import "./style.css"
 export default function Page() {
     const router = useRouter()
 
-    const training = localStorage.getItem("training") || null
+    useEffect(()=>{
+        if (!localStorage.getItem("training")) {
+            return router.push("/training/create")
+        }
+    }, [])
 
-    if (training == null) {
-        return router.push("/training/create")
-    }
-
-    const [workout, setWorkout] = useState<ITraining>(JSON.parse(training))
+    const [workout, setWorkout] = useState<ITraining>(JSON.parse(localStorage.getItem("training") as string))
 
     const [isCompleted, setIsCompleted] = useState(false)
 
     const [day, setDay] = useState(workout.sessions % workout.days.length)
 
     function changeDay(op: string) {
-        console.log(day)
         if (op === "+") {
             if (day + 1 >= workout.days.length) {
                 setDay(0)
@@ -39,7 +38,6 @@ export default function Page() {
                 setDay(day => day - 1)
             }
         }
-        console.log(day)
     }
 
     function finish() {
